@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">CryptoWatcher</string>
+	<string name="buttonMessage">Press me</string>
+</resources>
