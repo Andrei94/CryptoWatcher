@@ -12,11 +12,11 @@ import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-	@Rule @JvmField
+	@Rule
+	@JvmField
 	val rule = ActivityTestRule<MainActivity>(MainActivity::class.java)
 	@Test
 	fun useAppContext() {
-		// Context of the app under test.
 		val appContext = InstrumentationRegistry.getTargetContext()
 		assertEquals("de.projects.cryptowatcher", appContext.packageName)
 	}

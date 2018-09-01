@@ -9,7 +9,6 @@ import org.jetbrains.anko.button
 import org.jetbrains.anko.setContentView
 
 class MainActivity : Activity() {
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		MainView().setContentView(this)
@@ -18,9 +17,8 @@ class MainActivity : Activity() {
 
 class MainView : AnkoComponent<MainActivity> {
 	override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
-		button {
+		button("Press me") {
 			id = R.id.button
-			text = context.getString(R.string.buttonMessage)
 		}
 	}
 }
