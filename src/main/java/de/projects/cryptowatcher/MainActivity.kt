@@ -1,24 +1,38 @@
 package de.projects.cryptowatcher
 
 import android.app.Activity
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
-import android.view.View
-import org.jetbrains.anko.AnkoComponent
-import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.button
-import org.jetbrains.anko.setContentView
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : Activity() {
+class MainActivity : Activity(), ViewUpdater {
+	private val myReceiver: CryptoBroadcastReceiver = CryptoBroadcastReceiver(this)
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		MainView().setContentView(this)
+		setContentView(R.layout.activity_main)
+	}
+
+	override fun onStart() {
+		registerReceiver(myReceiver, intentFilter("MY_ACTION"))
+		startService(Intent(applicationContext, CryptoPriceService::class.java))
+		super.onStart()
+	}
+
+	override fun onStop() {
+		unregisterReceiver(myReceiver)
+		super.onStop()
+	}
+
+	override fun updateActivity(intent: Intent?) {
+		xbt.text = intent!!.getStringExtra("XBT PRICE")
+		eth.text = intent.getStringExtra("ETH PRICE")
 	}
 }
 
-class MainView : AnkoComponent<MainActivity> {
-	override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
-		button("Press me") {
-			id = R.id.button
-		}
-	}
+fun intentFilter(action: String): IntentFilter {
+	val filter = IntentFilter()
+	filter.addAction(action)
+	return filter
 }

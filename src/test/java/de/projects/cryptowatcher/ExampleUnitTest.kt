@@ -9,7 +9,7 @@ import org.junit.Test
 
 class ExampleUnitTest {
 	private val date = "2018-08-31"
-	private val url = "https://api.coindesk.com/v1/bpi/historical/close.json?start=${date}&end=${date}"
+	private val url = "https://api.coindesk.com/v1/bpi/historical/close.json?start=$date&end=$date"
 
 	@Test
 	fun `bitcoin price close on ${date}`() {
