@@ -19,15 +19,23 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/bitcoin_price"
-			android:textSize="24sp" />
+			android:textSize="24sp"
+			android:layout_marginEnd="30sp"/>
 
 		<TextView
 			android:id="@+id/btc"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="24sp"
+			android:textColor="@color/green"
+			android:layout_marginEnd="30sp"/>
+
+		<TextView
+			android:id="@+id/btcPercentChange"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="end"
-			android:textSize="24sp"
-			android:textColor="@color/green" />
+			android:textSize="24sp" />
 	</LinearLayout>
 
 	<LinearLayout
@@ -42,14 +50,22 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/eth_price"
-			android:textSize="24sp" />
+			android:textSize="24sp"
+			android:layout_marginEnd="30sp"/>
 
 		<TextView
 			android:id="@+id/eth"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/green"
+			android:textSize="24sp"
+			android:layout_marginEnd="30sp"/>
+
+		<TextView
+			android:id="@+id/ethPercentChange"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="end"
-			android:textColor="@color/green"
 			android:textSize="24sp" />
 	</LinearLayout>
 
@@ -65,14 +81,22 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/xrp_price"
-			android:textSize="24sp" />
+			android:textSize="24sp"
+			android:layout_marginEnd="30sp"/>
 
 		<TextView
 			android:id="@+id/xrp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="24sp"
+			android:textColor="@color/green"
+			android:layout_marginEnd="30sp"/>
+
+		<TextView
+			android:id="@+id/xrpPercentChange"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="end"
-			android:textSize="24sp"
-			android:textColor="@color/green" />
+			android:textSize="24sp" />
 	</LinearLayout>
 </LinearLayout>

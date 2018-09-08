@@ -8,6 +8,8 @@ import com.beust.klaxon.Klaxon
 import com.beust.klaxon.PathMatcher
 import de.projects.cryptowatcher.CryptoCurrencies.*
 import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
+import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_PERCENT_LOADED
+import de.projects.cryptowatcher.FiatCurrencies.USD
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.InputStreamReader
@@ -27,7 +29,7 @@ class CryptoPriceService : Service() {
 
 		override fun run() {
 			val btcGetRequest = OkHttpClient.Builder().build().newCall(CryptoPriceService.createGetRequest(btcUrl))
-			Klaxon().pathMatcher(BTCMatcher("USD")).parseJsonObject(InputStreamReader(btcGetRequest!!.execute().body()!!.byteStream()))
+			Klaxon().pathMatcher(CurrencyMatcher(BTC, USD)).pathMatcher(CurrencyPercentMatcher(BTC)).parseJsonObject(InputStreamReader(btcGetRequest!!.execute().body()!!.byteStream()))
 		}
 	}
 
@@ -36,7 +38,7 @@ class CryptoPriceService : Service() {
 
 		override fun run() {
 			val ethGetRequest = OkHttpClient.Builder().build().newCall(createGetRequest(ethUrl))
-			Klaxon().pathMatcher(ETHMatcher("USD")).parseJsonObject(InputStreamReader(ethGetRequest!!.execute().body()!!.byteStream()))
+			Klaxon().pathMatcher(CurrencyMatcher(ETH, USD)).pathMatcher(CurrencyPercentMatcher(ETH)).parseJsonObject(InputStreamReader(ethGetRequest!!.execute().body()!!.byteStream()))
 		}
 	}
 
@@ -45,25 +47,29 @@ class CryptoPriceService : Service() {
 
 		override fun run() {
 			val xrpGetRequest = OkHttpClient.Builder().build().newCall(createGetRequest(xrpUrl))
-			Klaxon().pathMatcher(XRPMatcher("USD")).parseJsonObject(InputStreamReader(xrpGetRequest!!.execute().body()!!.byteStream()))
+			Klaxon().pathMatcher(CurrencyMatcher(XRP, USD)).pathMatcher(CurrencyPercentMatcher(XRP)).parseJsonObject(InputStreamReader(xrpGetRequest!!.execute().body()!!.byteStream()))
 		}
 	}
 
-	open inner class CurrencyMatcher(private val crypto: CryptoCurrencies, private val currencyFiat: String) : PathMatcher {
+	inner class CurrencyMatcher(private val crypto: CryptoCurrencies, private val currencyFiat: FiatCurrencies) : PathMatcher {
+		override fun pathMatches(path: String): Boolean = Pattern.matches(".*$crypto.*header_data.*bpi.*$currencyFiat.*rate_float.*", path)
+
 		override fun onMatch(path: String, value: Any) {
 			val intent = Intent("$ACTION_CRYPTO_DATA_LOADED")
 			intent.putExtra("$crypto PRICE", value.toString())
 			sendBroadcast(intent)
 		}
-
-		override fun pathMatches(path: String): Boolean = Pattern.matches(".*$crypto.*header_data.*bpi.*$currencyFiat.*rate_float.*", path)
 	}
 
-	inner class BTCMatcher(currencyFiat: String) : CurrencyMatcher(BTC, currencyFiat)
+	inner class CurrencyPercentMatcher(private val crypto: CryptoCurrencies) : PathMatcher {
+		override fun pathMatches(path: String): Boolean = Pattern.matches(".*$crypto.*header_data.*changepc.*", path)
 
-	inner class ETHMatcher(currencyFiat: String) : CurrencyMatcher(ETH, currencyFiat)
-
-	inner class XRPMatcher(currencyFiat: String) : CurrencyMatcher(XRP, currencyFiat)
+		override fun onMatch(path: String, value: Any) {
+			val intent = Intent("$ACTION_CRYPTO_PERCENT_LOADED")
+			intent.putExtra("$crypto PERCENT", value.toString())
+			sendBroadcast(intent)
+		}
+	}
 
 	companion object Requests {
 		fun createGetRequest(url: String): Request = Request.Builder().url(url).build()
