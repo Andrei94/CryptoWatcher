@@ -4,5 +4,6 @@ enum class CryptoCurrencies {
 	BTC,
 	ETH,
 	XRP,
-	LTC
+	LTC,
+	BCH
 }

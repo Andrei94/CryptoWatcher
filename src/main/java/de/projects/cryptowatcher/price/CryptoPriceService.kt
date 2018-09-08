@@ -13,6 +13,7 @@ class CryptoPriceService : Service() {
 		CryptoHandlerThread("https://api.coindesk.com/site/chartandheaderdata?currency=$ETH", ETH, USD, this).start()
 		CryptoHandlerThread("https://api.coindesk.com/site/chartandheaderdata?currency=$XRP", XRP, USD, this).start()
 		CryptoHandlerThread("https://api.coindesk.com/site/chartandheaderdata?currency=$LTC", LTC, USD, this).start()
+		CryptoHandlerThread("https://api.coindesk.com/site/chartandheaderdata?currency=$BCH", BCH, USD, this).start()
 
 		return super.onStartCommand(intent, flags, startId)
 	}
