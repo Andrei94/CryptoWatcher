@@ -4,6 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
+	android:paddingBottom="10sp"
 	tools:context=".MainActivity">
 
 	<LinearLayout
@@ -24,7 +25,7 @@
 			android:id="@+id/btc"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center"
+			android:gravity="end"
 			android:textSize="24sp"
 			android:textColor="@color/green" />
 	</LinearLayout>
@@ -47,7 +48,7 @@
 			android:id="@+id/eth"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center"
+			android:gravity="end"
 			android:textColor="@color/green"
 			android:textSize="24sp" />
 	</LinearLayout>
@@ -70,7 +71,7 @@
 			android:id="@+id/xrp"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center"
+			android:gravity="end"
 			android:textSize="24sp"
 			android:textColor="@color/green" />
 	</LinearLayout>

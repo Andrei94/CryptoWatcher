@@ -26,14 +26,14 @@ class MainActivity : Activity(), ViewUpdater {
 	}
 
 	override fun updateActivity(intent: Intent?) {
-		if (intent?.getStringExtra("BTC PRICE") != null) {
-			btc.text = intent.getStringExtra("BTC PRICE")
+		if (intent?.getStringExtra("${CryptoCurrencies.BTC} PRICE") != null) {
+			btc.text = intent.getStringExtra("${CryptoCurrencies.BTC} PRICE")
 		}
-		if (intent?.getStringExtra("ETH PRICE") != null) {
-			eth.text = intent.getStringExtra("ETH PRICE")
+		if (intent?.getStringExtra("${CryptoCurrencies.ETH} PRICE") != null) {
+			eth.text = intent.getStringExtra("${CryptoCurrencies.ETH} PRICE")
 		}
-		if (intent?.getStringExtra("XRP PRICE") != null) {
-			xrp.text = intent.getStringExtra("XRP PRICE")
+		if (intent?.getStringExtra("${CryptoCurrencies.XRP} PRICE") != null) {
+			xrp.text = intent.getStringExtra("${CryptoCurrencies.XRP} PRICE")
 		}
 	}
 }

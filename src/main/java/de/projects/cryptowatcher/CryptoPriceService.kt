@@ -21,7 +21,7 @@ class CryptoPriceService : Service() {
 	}
 
 	inner class BTCHandler : HandlerThread("btc") {
-		private val btcUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=btc"
+		private val btcUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=${CryptoCurrencies.BTC}"
 
 		override fun run() {
 			val btcGetRequest = OkHttpClient.Builder().build().newCall(CryptoPriceService.createGetRequest(btcUrl))
@@ -30,7 +30,7 @@ class CryptoPriceService : Service() {
 	}
 
 	inner class ETHHandler : HandlerThread("eth") {
-		private val ethUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=eth"
+		private val ethUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=${CryptoCurrencies.ETH}"
 
 		override fun run() {
 			val ethGetRequest = OkHttpClient.Builder().build().newCall(createGetRequest(ethUrl))
@@ -39,7 +39,7 @@ class CryptoPriceService : Service() {
 	}
 
 	inner class XRPHandler : HandlerThread("xrp") {
-		private val xrpUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=xrp"
+		private val xrpUrl = "https://api.coindesk.com/site/chartandheaderdata?currency=${CryptoCurrencies.XRP}"
 
 		override fun run() {
 			val xrpGetRequest = OkHttpClient.Builder().build().newCall(createGetRequest(xrpUrl))
@@ -47,7 +47,7 @@ class CryptoPriceService : Service() {
 		}
 	}
 
-	open inner class CurrencyMatcher(private val crypto: String, private val currencyFiat: String) : PathMatcher {
+	open inner class CurrencyMatcher(private val crypto: CryptoCurrencies, private val currencyFiat: String) : PathMatcher {
 		override fun onMatch(path: String, value: Any) {
 			val intent = Intent("MY_ACTION")
 			intent.putExtra("$crypto PRICE", value.toString())
@@ -57,11 +57,11 @@ class CryptoPriceService : Service() {
 		override fun pathMatches(path: String): Boolean = Pattern.matches(".*$crypto.*header_data.*bpi.*$currencyFiat.*rate_float.*", path)
 	}
 
-	inner class BTCMatcher(currencyFiat: String) : CurrencyMatcher("BTC", currencyFiat)
+	inner class BTCMatcher(currencyFiat: String) : CurrencyMatcher(CryptoCurrencies.BTC, currencyFiat)
 
-	inner class ETHMatcher(currencyFiat: String) : CurrencyMatcher("ETH", currencyFiat)
+	inner class ETHMatcher(currencyFiat: String) : CurrencyMatcher(CryptoCurrencies.ETH, currencyFiat)
 
-	inner class XRPMatcher(currencyFiat: String) : CurrencyMatcher("XRP", currencyFiat)
+	inner class XRPMatcher(currencyFiat: String) : CurrencyMatcher(CryptoCurrencies.XRP, currencyFiat)
 
 	companion object Requests {
 		fun createGetRequest(url: String): Request = Request.Builder().url(url).build()
