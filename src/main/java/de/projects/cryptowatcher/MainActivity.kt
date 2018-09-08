@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import de.projects.cryptowatcher.CryptoCurrencies.*
 import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
 import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_PERCENT_LOADED
@@ -28,51 +30,18 @@ class MainActivity : Activity(), ViewUpdater {
 		super.onStop()
 	}
 
-	override fun updateActivity(intent: Intent?) {
-		if (intent?.getStringExtra("$BTC PRICE") != null) {
-			btc.text = intent.getStringExtra("$BTC PRICE")
-		}
-		if (intent?.getStringExtra("$BTC PERCENT") != null) {
-			btcPercentChange.text = intent.getStringExtra("$BTC PERCENT")
-			if (intent.getStringExtra("$BTC PERCENT") != null) {
-				ethPercentChange.text = intent.getStringExtra("$ETH PERCENT")
-				if(intent.getStringExtra("$BTC PERCENT").toDouble() < 0) {
-					btc.setTextColor(getColor(R.color.red))
-					btcPercentChange.setTextColor(getColor(R.color.red))
-				} else {
-					btc.setTextColor(getColor(R.color.green))
-					btcPercentChange.setTextColor(getColor(R.color.green))
-				}
-			}
-		}
+	fun updatePrices(view: View) {
+		startService(Intent(applicationContext, CryptoPriceService::class.java))
+		Toast.makeText(applicationContext, "Prices updated", Toast.LENGTH_SHORT).show()
+	}
 
-		if (intent?.getStringExtra("$ETH PRICE") != null) {
-			eth.text = intent.getStringExtra("$ETH PRICE")
-		}
-		if (intent?.getStringExtra("$ETH PERCENT") != null) {
-			ethPercentChange.text = intent.getStringExtra("$ETH PERCENT")
-			if(intent.getStringExtra("$ETH PERCENT").toDouble() < 0) {
-				eth.setTextColor(getColor(R.color.red))
-				ethPercentChange.setTextColor(getColor(R.color.red))
-			} else {
-				eth.setTextColor(getColor(R.color.green))
-				ethPercentChange.setTextColor(getColor(R.color.green))
-			}
-		}
-
-		if (intent?.getStringExtra("$XRP PRICE") != null) {
-			xrp.text = intent.getStringExtra("$XRP PRICE")
-		}
-		if (intent?.getStringExtra("$XRP PERCENT") != null) {
-			xrpPercentChange.text = intent.getStringExtra("$XRP PERCENT")
-			if(intent.getStringExtra("$XRP PERCENT").toDouble() < 0) {
-				xrp.setTextColor(getColor(R.color.red))
-				xrpPercentChange.setTextColor(getColor(R.color.red))
-			} else {
-				xrp.setTextColor(getColor(R.color.green))
-				xrpPercentChange.setTextColor(getColor(R.color.green))
-			}
-		}
+	override fun updateActivity(intent: Intent) {
+		PricePresenter(btc, btcPercentChange)
+				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$BTC PRICE"), intent.getStringExtra("$BTC PERCENT"), getColor(R.color.green), getColor(R.color.red)))
+		PricePresenter(eth, ethPercentChange)
+				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$ETH PRICE"), intent.getStringExtra("$ETH PERCENT"), getColor(R.color.green), getColor(R.color.red)))
+		PricePresenter(xrp, xrpPercentChange)
+				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$XRP PRICE"), intent.getStringExtra("$XRP PERCENT"), getColor(R.color.green), getColor(R.color.red)))
 	}
 }
 
