@@ -7,7 +7,7 @@ import org.hamcrest.core.IsEqual.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
 
-class ExampleUnitTest {
+class CoindeskApiTest {
 	private val date = "2018-08-31"
 	private val url = "https://api.coindesk.com/v1/bpi/historical/close.json?start=$date&end=$date"
 
@@ -19,12 +19,10 @@ class ExampleUnitTest {
 	}
 
 	companion object Requests {
-		fun createGetRequest(url: String) = Request.Builder().url(url).build()
+		fun createGetRequest(url: String): Request = Request.Builder().url(url).build()
 	}
 }
 
 class BitcoinClosePrice(val bpi: Map<String, Double>) {
-	fun priceOn(date: String): Double? {
-		return bpi[date]
-	}
+	fun priceOn(date: String): Double? = bpi[date]
 }

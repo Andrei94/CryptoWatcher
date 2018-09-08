@@ -1,6 +1,7 @@
 <resources>
-	<string name="app_name">CryptoWatcher</string>
+	<string name="app_name">Crypto Watcher</string>
 	<string name="buttonMessage">Press me</string>
 	<string name="bitcoin_price">Bitcoin Price</string>
 	<string name="eth_price">Ethereum Price</string>
+	<string name="xrp_price">Ripple Price</string>
 </resources>

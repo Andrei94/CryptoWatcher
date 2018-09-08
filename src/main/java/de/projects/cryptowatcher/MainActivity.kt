@@ -26,8 +26,15 @@ class MainActivity : Activity(), ViewUpdater {
 	}
 
 	override fun updateActivity(intent: Intent?) {
-		xbt.text = intent!!.getStringExtra("XBT PRICE")
-		eth.text = intent.getStringExtra("ETH PRICE")
+		if (intent?.getStringExtra("BTC PRICE") != null) {
+			btc.text = intent.getStringExtra("BTC PRICE")
+		}
+		if (intent?.getStringExtra("ETH PRICE") != null) {
+			eth.text = intent.getStringExtra("ETH PRICE")
+		}
+		if (intent?.getStringExtra("XRP PRICE") != null) {
+			xrp.text = intent.getStringExtra("XRP PRICE")
+		}
 	}
 }
 
