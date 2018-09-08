@@ -136,7 +136,6 @@
 		android:layout_height="wrap_content"
 		android:paddingStart="10sp"
 		android:paddingEnd="10sp"
-		android:layout_marginBottom="50sp"
 		android:orientation="horizontal">
 
 		<TextView
