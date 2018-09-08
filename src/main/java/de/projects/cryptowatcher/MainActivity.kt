@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity(), ViewUpdater {
@@ -15,7 +16,7 @@ class MainActivity : Activity(), ViewUpdater {
 	}
 
 	override fun onStart() {
-		registerReceiver(myReceiver, intentFilter("MY_ACTION"))
+		registerReceiver(myReceiver, intentFilter("$ACTION_CRYPTO_DATA_LOADED"))
 		startService(Intent(applicationContext, CryptoPriceService::class.java))
 		super.onStart()
 	}
