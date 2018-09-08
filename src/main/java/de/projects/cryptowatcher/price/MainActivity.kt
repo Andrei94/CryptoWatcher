@@ -43,9 +43,11 @@ class MainActivity : Activity(), ViewUpdater {
 				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$ETH PRICE"), intent.getStringExtra("$ETH PERCENT"), getColor(R.color.green), getColor(R.color.red)))
 		PricePresenter(xrp, xrpPercentChange)
 				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$XRP PRICE"), intent.getStringExtra("$XRP PERCENT"), getColor(R.color.green), getColor(R.color.red)))
+		PricePresenter(ltc, ltcPercentChange)
+				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$LTC PRICE"), intent.getStringExtra("$LTC PERCENT"), getColor(R.color.green), getColor(R.color.red)))
 	}
 
-	fun intentFilter(vararg actions: String): IntentFilter {
+	private fun intentFilter(vararg actions: String): IntentFilter {
 		val intents = IntentFilter()
 		actions.forEach { intents.addAction(it) }
 		return intents

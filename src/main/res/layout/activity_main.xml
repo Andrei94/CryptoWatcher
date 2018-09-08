@@ -74,7 +74,6 @@
 		android:layout_height="wrap_content"
 		android:paddingStart="10sp"
 		android:paddingEnd="10sp"
-		android:layout_marginBottom="50sp"
 		android:orientation="horizontal">
 
 		<TextView
@@ -95,6 +94,38 @@
 
 		<TextView
 			android:id="@+id/xrpPercentChange"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="end"
+			android:textSize="20sp" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingStart="10sp"
+		android:paddingEnd="10sp"
+		android:layout_marginBottom="50sp"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/ltcLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ltc_price"
+			android:textSize="20sp"
+			android:layout_marginEnd="10sp"/>
+
+		<TextView
+			android:id="@+id/ltc"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:textSize="20sp"
+			android:layout_marginEnd="10sp"/>
+
+		<TextView
+			android:id="@+id/ltcPercentChange"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="end"
