@@ -5,7 +5,7 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical"
 	android:paddingBottom="10sp"
-	tools:context=".MainActivity">
+	tools:context=".price.MainActivity">
 
 	<LinearLayout
 		android:layout_width="match_parent"

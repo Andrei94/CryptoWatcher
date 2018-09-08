@@ -1,4 +1,4 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.intents
 
 enum class CryptoIntents {
 	ACTION_CRYPTO_DATA_LOADED,

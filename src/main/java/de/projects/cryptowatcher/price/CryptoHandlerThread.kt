@@ -1,7 +1,9 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.price
 
 import android.os.HandlerThread
 import com.beust.klaxon.Klaxon
+import de.projects.cryptowatcher.currencies.CryptoCurrencies
+import de.projects.cryptowatcher.currencies.FiatCurrencies
 import okhttp3.OkHttpClient
 import java.io.InputStreamReader
 

@@ -1,4 +1,4 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.price
 
 import android.widget.TextView
 
@@ -19,5 +19,3 @@ class PricePresenter(private val price: TextView, private val percent: TextView)
 		}
 	}
 }
-
-data class CryptoData(val cryptoValue: String?, val cryptoPercent: String?, val colorAboveZero: Int, val colorBelowZero: Int)

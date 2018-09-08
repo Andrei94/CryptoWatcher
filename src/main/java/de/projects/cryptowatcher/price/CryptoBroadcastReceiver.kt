@@ -1,4 +1,4 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.price
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -1,4 +1,4 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.currencies
 
 enum class CryptoCurrencies {
 	BTC,

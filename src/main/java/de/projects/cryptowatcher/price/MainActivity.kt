@@ -1,4 +1,4 @@
-package de.projects.cryptowatcher
+package de.projects.cryptowatcher.price
 
 import android.app.Activity
 import android.content.Intent
@@ -6,9 +6,10 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import de.projects.cryptowatcher.CryptoCurrencies.*
-import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
-import de.projects.cryptowatcher.CryptoIntents.ACTION_CRYPTO_PERCENT_LOADED
+import de.projects.cryptowatcher.R
+import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
+import de.projects.cryptowatcher.intents.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
+import de.projects.cryptowatcher.intents.CryptoIntents.ACTION_CRYPTO_PERCENT_LOADED
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity(), ViewUpdater {
@@ -43,10 +44,10 @@ class MainActivity : Activity(), ViewUpdater {
 		PricePresenter(xrp, xrpPercentChange)
 				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$XRP PRICE"), intent.getStringExtra("$XRP PERCENT"), getColor(R.color.green), getColor(R.color.red)))
 	}
-}
 
-fun intentFilter(vararg actions: String): IntentFilter {
-	val intents = IntentFilter()
-	actions.forEach { intents.addAction(it) }
-	return intents
+	fun intentFilter(vararg actions: String): IntentFilter {
+		val intents = IntentFilter()
+		actions.forEach { intents.addAction(it) }
+		return intents
+	}
 }
