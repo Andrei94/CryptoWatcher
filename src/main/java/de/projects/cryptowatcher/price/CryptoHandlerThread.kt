@@ -17,7 +17,7 @@ class CryptoHandlerThread(private val url: String, private val crypto: CryptoCur
 					.pathMatcher(CurrencyPercentMatcher(crypto, cryptoPriceService))
 					.parseJsonObject(InputStreamReader(response.body()!!.byteStream()))
 		} catch (e : UnknownHostException) {
-			quit()
 		}
+		quit()
 	}
 }

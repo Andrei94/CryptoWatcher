@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity(), ViewUpdater {
 	private val myReceiver: CryptoBroadcastReceiver = CryptoBroadcastReceiver(this)
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
@@ -22,7 +21,7 @@ class MainActivity : Activity(), ViewUpdater {
 
 	override fun onStart() {
 		registerReceiver(myReceiver, intentFilter("$ACTION_CRYPTO_DATA_LOADED", "$ACTION_CRYPTO_PERCENT_LOADED"))
-		startService(Intent(applicationContext, CryptoPriceService::class.java))
+		startService(Intent(this, CryptoPriceService::class.java))
 		super.onStart()
 	}
 
@@ -32,8 +31,8 @@ class MainActivity : Activity(), ViewUpdater {
 	}
 
 	fun updatePrices(view: View) {
-		startService(Intent(applicationContext, CryptoPriceService::class.java))
-		Toast.makeText(applicationContext, "Prices updated", Toast.LENGTH_SHORT).show()
+		startService(Intent(this, CryptoPriceService::class.java))
+		Toast.makeText(this, "Prices updated", Toast.LENGTH_SHORT).show()
 	}
 
 	override fun updateActivity(intent: Intent) {
