@@ -20,7 +20,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/bitcoin_price"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/btc"
@@ -28,7 +28,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/btcPercentChange"
@@ -51,7 +51,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/eth_price"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/eth"
@@ -59,7 +59,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/ethPercentChange"
@@ -82,7 +82,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/xrp_price"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/xrp"
@@ -90,7 +90,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/xrpPercentChange"
@@ -113,7 +113,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/ltc_price"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/ltc"
@@ -121,7 +121,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/ltcPercentChange"
@@ -144,7 +144,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/bch_price"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/bch"
@@ -152,7 +152,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
+			android:layout_marginEnd="10sp" />
 
 		<TextView
 			android:id="@+id/bchPercentChange"
@@ -162,7 +162,7 @@
 			android:textSize="20sp" />
 	</LinearLayout>
 
-	<LinearLayout
+	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginTop="50sp"
@@ -176,5 +176,13 @@
 			android:onClick="updatePrices"
 			android:text="@string/update_prices"
 			android:textSize="20sp" />
-	</LinearLayout>
+
+		<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/adView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			ads:adSize="BANNER"
+			ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+	</RelativeLayout>
 </LinearLayout>

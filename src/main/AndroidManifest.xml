@@ -3,6 +3,9 @@
 	package="de.projects.cryptowatcher">
 
 	<uses-permission android:name="android.permission.INTERNET" />
+	<meta-data
+		android:name="com.google.android.gms.ads.APPLICATION_ID"
+		android:value="ca-app-pub-2557366403157516~6699126486"/>
 
 	<application
 		android:allowBackup="true"

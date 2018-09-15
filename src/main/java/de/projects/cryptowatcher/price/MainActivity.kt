@@ -6,6 +6,8 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import de.projects.cryptowatcher.R
 import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
 import de.projects.cryptowatcher.intents.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
@@ -17,6 +19,9 @@ class MainActivity : Activity(), ViewUpdater {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+
+		MobileAds.initialize(this, "ca-app-pub-2557366403157516~6699126486")
+		adView.loadAd(AdRequest.Builder().build())
 	}
 
 	override fun onStart() {
