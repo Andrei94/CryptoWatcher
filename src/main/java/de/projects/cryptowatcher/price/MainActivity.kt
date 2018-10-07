@@ -5,11 +5,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import de.projects.cryptowatcher.R
+import de.projects.cryptowatcher.R.string.loading
 import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
-import de.projects.cryptowatcher.intents.CryptoIntents.ACTION_CRYPTO_DATA_LOADED
-import de.projects.cryptowatcher.intents.CryptoIntents.ACTION_CRYPTO_PERCENT_LOADED
+import de.projects.cryptowatcher.intents.CryptoIntents.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity(), ViewUpdater {
@@ -17,10 +16,11 @@ class MainActivity : Activity(), ViewUpdater {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+		setLoadingText()
 	}
 
 	override fun onStart() {
-		registerReceiver(myReceiver, intentFilter("$ACTION_CRYPTO_DATA_LOADED", "$ACTION_CRYPTO_PERCENT_LOADED"))
+		registerReceiver(myReceiver, intentFilter("$ACTION_CRYPTO_DATA_LOADED", "$ACTION_CRYPTO_PERCENT_LOADED", "$ACTION_CRYPTO_FAILED_TO_LOAD"))
 		startService(Intent(this, CryptoPriceService::class.java))
 		super.onStart()
 	}
@@ -32,10 +32,26 @@ class MainActivity : Activity(), ViewUpdater {
 
 	fun updatePrices(view: View) {
 		startService(Intent(this, CryptoPriceService::class.java))
-		Toast.makeText(this, "Prices updated", Toast.LENGTH_SHORT).show()
+		setLoadingText()
+	}
+
+	private fun setLoadingText() {
+		btc.text = getString(loading)
+		eth.text = getString(loading)
+		xrp.text = getString(loading)
+		ltc.text = getString(loading)
+		bch.text = getString(loading)
 	}
 
 	override fun updateActivity(intent: Intent) {
+		intent.getStringExtra("ERROR")?.let {
+			btc.text = intent.getStringExtra("ERROR")
+			eth.text = intent.getStringExtra("ERROR")
+			xrp.text = intent.getStringExtra("ERROR")
+			ltc.text = intent.getStringExtra("ERROR")
+			bch.text = intent.getStringExtra("ERROR")
+			return
+		}
 		PricePresenter(btc, btcPercentChange)
 				.setCryptoDataWithColor(CryptoData(intent.getStringExtra("$BTC PRICE"), intent.getStringExtra("$BTC PERCENT"), getColor(R.color.green), getColor(R.color.red)))
 		PricePresenter(eth, ethPercentChange)

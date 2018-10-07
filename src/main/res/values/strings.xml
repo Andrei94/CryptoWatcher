@@ -7,4 +7,5 @@
 	<string name="update_prices">Update Prices</string>
 	<string name="ltc_price">Litecoin Price</string>
 	<string name="bch_price">Bitcoin Cash Price</string>
+	<string name="loading">Loading…</string>
 </resources>

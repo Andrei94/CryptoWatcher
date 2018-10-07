@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.IBinder
 import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
 import de.projects.cryptowatcher.currencies.FiatCurrencies.USD
+import de.projects.cryptowatcher.intents.CryptoIntents
 import okhttp3.Request
 
 class CryptoPriceService : Service() {
@@ -16,6 +17,12 @@ class CryptoPriceService : Service() {
 		CryptoHandlerThread("https://api.coindesk.com/site/chartandheaderdata?currency=$BCH", BCH, USD, this).start()
 
 		return START_NOT_STICKY
+	}
+
+	fun broadcastNetworkError() {
+		val intent = Intent("${CryptoIntents.ACTION_CRYPTO_FAILED_TO_LOAD}")
+		intent.putExtra("ERROR", "Failed to get data!")
+		sendBroadcast(intent)
 	}
 
 	companion object Requests {
