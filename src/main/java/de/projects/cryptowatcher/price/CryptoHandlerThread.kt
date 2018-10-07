@@ -6,6 +6,7 @@ import de.projects.cryptowatcher.currencies.CryptoCurrencies
 import de.projects.cryptowatcher.currencies.FiatCurrencies
 import okhttp3.OkHttpClient
 import java.io.InputStreamReader
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 class CryptoHandlerThread(private val url: String, private val crypto: CryptoCurrencies, private val fiat: FiatCurrencies, private val cryptoPriceService: CryptoPriceService) : HandlerThread("crypto") {
@@ -16,7 +17,9 @@ class CryptoHandlerThread(private val url: String, private val crypto: CryptoCur
 			Klaxon().pathMatcher(CurrencyMatcher(crypto, fiat, cryptoPriceService))
 					.pathMatcher(CurrencyPercentMatcher(crypto, cryptoPriceService))
 					.parseJsonObject(InputStreamReader(response.body()!!.byteStream()))
-		} catch (e : UnknownHostException) {
+		} catch (e: UnknownHostException) {
+		} catch (e: SocketTimeoutException) {
+			cryptoPriceService.broadcastNetworkError()
 		}
 		quit()
 	}
