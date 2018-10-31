@@ -162,7 +162,7 @@
 			android:textSize="20sp" />
 	</LinearLayout>
 
-	<LinearLayout
+	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginTop="50sp"
@@ -176,5 +176,13 @@
 			android:onClick="updatePrices"
 			android:text="@string/update_prices"
 			android:textSize="20sp" />
-	</LinearLayout>
+		<TextView
+			android:id="@+id/coindesk"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:textSize="20sp"
+			android:textAlignment="center"
+			android:text="@string/powered_by_coindesk" />
+	</RelativeLayout>
 </LinearLayout>

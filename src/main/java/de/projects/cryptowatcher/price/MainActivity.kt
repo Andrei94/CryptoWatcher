@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.View
 import de.projects.cryptowatcher.R
 import de.projects.cryptowatcher.R.string.loading
@@ -16,7 +17,12 @@ class MainActivity : Activity(), ViewUpdater {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+		setCoindeskReference()
 		setLoadingText()
+	}
+
+	private fun setCoindeskReference() {
+		coindesk.movementMethod = LinkMovementMethod()
 	}
 
 	override fun onStart() {
