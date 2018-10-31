@@ -198,6 +198,16 @@
 			android:onClick="updatePrices"
 			android:text="@string/update_prices"
 			android:textSize="20sp" />
+
+		<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/adView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="30sp"
+			ads:adSize="BANNER"
+			ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
 		<TextView
 			android:id="@+id/coindesk"
 			android:layout_width="match_parent"
@@ -206,13 +216,5 @@
 			android:textSize="20sp"
 			android:textAlignment="center"
 			android:text="@string/powered_by_coindesk" />
-
-		<com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-			android:id="@+id/adView"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_alignParentBottom="true"
-			ads:adSize="BANNER"
-			ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
 	</RelativeLayout>
 </LinearLayout>
