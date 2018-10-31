@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.View
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -18,10 +19,14 @@ class MainActivity : Activity(), ViewUpdater {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
-
-		MobileAds.initialize(this, "ca-app-pub-2557366403157516~6699126486")
+		MobileAds.initialize(this, "ca-app-pub-3940256099942544/6300978111")
 		adView.loadAd(AdRequest.Builder().build())
+		setCoindeskReference()
 		setLoadingText()
+	}
+
+	private fun setCoindeskReference() {
+		coindesk.movementMethod = LinkMovementMethod()
 	}
 
 	override fun onStart() {
