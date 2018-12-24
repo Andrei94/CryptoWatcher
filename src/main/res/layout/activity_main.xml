@@ -7,204 +7,168 @@
 	android:paddingBottom="10sp"
 	tools:context=".price.MainActivity">
 
-	<LinearLayout
+	<TableLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="horizontal"
 		android:paddingStart="10sp"
 		android:paddingEnd="10sp">
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/usd_price"
-			android:textSize="15sp"
-			android:layout_marginEnd="10sp"/>
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 
-		<TextView
+			<TextView
+				android:text="@string/usd_price"
+				android:textSize="15sp"
+				android:textAlignment="center"
+				android:layout_column="1"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:text="@string/today_change"
+				android:textSize="15sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/btcLabel"
+				android:text="@string/bitcoin_price"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/btc"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/btcPercentChange"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/ethLabel"
+				android:text="@string/eth_price"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/eth"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/ethPercentChange"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/xrpLabel"
+				android:text="@string/xrp_price"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/xrp"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/xrpPercentChange"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/ltcLabel"
+				android:text="@string/ltc_price"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/ltc"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/ltcPercentChange"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/bchLabel"
+				android:text="@string/bch_price"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/bch"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/bchPercentChange"
+				android:textSize="20sp"
+				android:textAlignment="center"
+				android:layout_weight="1"/>
+		</TableRow>
+
+		<TableRow
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/today_change"
-			android:gravity="end"
-			android:textSize="15sp" />
-	</LinearLayout>
+			android:layout_marginTop="50sp">
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:paddingStart="10sp"
-		android:paddingEnd="10sp">
-
-		<TextView
-			android:id="@+id/btcLabel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/bitcoin_price"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/btc"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/btcPercentChange"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:textSize="20sp" />
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:paddingStart="10sp"
-		android:paddingEnd="10sp">
-
-		<TextView
-			android:id="@+id/ethLabel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/eth_price"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/eth"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/ethPercentChange"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:textSize="20sp" />
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingStart="10sp"
-		android:paddingEnd="10sp"
-		android:orientation="horizontal">
-
-		<TextView
-			android:id="@+id/xrpLabel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/xrp_price"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/xrp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/xrpPercentChange"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:textSize="20sp" />
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingStart="10sp"
-		android:paddingEnd="10sp"
-		android:orientation="horizontal">
-
-		<TextView
-			android:id="@+id/ltcLabel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/ltc_price"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/ltc"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/ltcPercentChange"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:textSize="20sp" />
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingStart="10sp"
-		android:paddingEnd="10sp"
-		android:orientation="horizontal">
-
-		<TextView
-			android:id="@+id/bchLabel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/bch_price"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/bch"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:textSize="20sp"
-			android:layout_marginEnd="10sp"/>
-
-		<TextView
-			android:id="@+id/bchPercentChange"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="end"
-			android:textSize="20sp" />
-	</LinearLayout>
+			<Button
+				android:gravity="center"
+				android:lines="2"
+				android:onClick="updatePrices"
+				android:text="@string/update_prices"
+				android:textSize="20sp"
+				android:layout_weight="2"/>
+		</TableRow>
+	</TableLayout>
 
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginTop="50sp"
 		android:orientation="vertical">
 
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:lines="2"
-			android:onClick="updatePrices"
-			android:text="@string/update_prices"
-			android:textSize="20sp" />
 		<TextView
 			android:id="@+id/coindesk"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_alignParentBottom="true"
-			android:textSize="20sp"
-			android:textAlignment="center"
-			android:text="@string/powered_by_coindesk" />
+			android:textSize="15sp"
+			android:text="@string/powered_by_coindesk"
+			android:paddingStart="10sp"
+			android:paddingEnd="10sp"/>
 	</RelativeLayout>
 </LinearLayout>
