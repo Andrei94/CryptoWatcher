@@ -5,10 +5,13 @@ import android.widget.TextView
 class PricePresenter(private val price: TextView, private val percent: TextView) {
 	fun setCryptoDataWithColor(cryptoData: CryptoData) {
 		cryptoData.cryptoValue?.let {
-			price.text = cryptoData.cryptoValue
+			if(cryptoData.cryptoValue.toDouble() <= 1)
+				price.text = "%.4f".format(cryptoData.cryptoValue.toFloat())
+			else
+				price.text = "%.2f".format(cryptoData.cryptoValue.toFloat())
 		}
 		cryptoData.cryptoPercent?.let {
-			percent.text = cryptoData.cryptoPercent.plus("%")
+			percent.text = "%.2f".format(cryptoData.cryptoPercent.toFloat()).plus("%")
 			if (cryptoData.cryptoPercent.toDouble() >= 0) {
 				price.setTextColor(cryptoData.colorAboveZero)
 				percent.setTextColor(cryptoData.colorAboveZero)
