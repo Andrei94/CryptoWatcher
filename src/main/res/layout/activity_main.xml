@@ -168,7 +168,7 @@
 			android:layout_alignParentBottom="true"
 			android:layout_marginBottom="30sp"
 			ads:adSize="BANNER"
-			ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+			ads:adUnitId="ca-app-pub-2557366403157516/1030322241" />
 
 		<TextView
 			android:id="@+id/coindesk"
