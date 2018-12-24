@@ -15,7 +15,7 @@ class CryptoHandlerThread(private val url: String, private val crypto: CryptoCur
 		try {
 			val response = btcGetRequest!!.execute()
 			Klaxon().pathMatcher(CurrencyMatcher(crypto, fiat, cryptoPriceService))
-					.pathMatcher(CurrencyPercentMatcher(crypto, cryptoPriceService))
+					.pathMatcher(CurrencyPercentMatcher(crypto, fiat, cryptoPriceService))
 					.parseJsonObject(InputStreamReader(response.body()!!.byteStream()))
 		} catch (e: UnknownHostException) {
 		} catch (e: SocketTimeoutException) {

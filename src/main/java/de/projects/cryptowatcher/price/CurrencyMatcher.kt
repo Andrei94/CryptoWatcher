@@ -8,7 +8,7 @@ import de.projects.cryptowatcher.intents.CryptoIntents
 import java.util.regex.Pattern
 
 class CurrencyMatcher(private val crypto: CryptoCurrencies, private val currencyFiat: FiatCurrencies, private val cryptoPriceService: CryptoPriceService) : PathMatcher {
-	override fun pathMatches(path: String): Boolean = Pattern.matches(".*$crypto.*header_data.*bpi.*$currencyFiat.*rate_float.*", path)
+	override fun pathMatches(path: String): Boolean = Pattern.matches(".*data.*currency.*$crypto.*$currencyFiat.*price.*", path)
 
 	override fun onMatch(path: String, value: Any) {
 		val intent = Intent("${CryptoIntents.ACTION_CRYPTO_DATA_LOADED}")
