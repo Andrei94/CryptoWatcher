@@ -1,0 +1,11 @@
+<resources>
+	<string name="app_name">Crypto Watcher</string>
+	<string name="buttonMessage">Press me</string>
+	<string name="bitcoin_price">Bitcoin Price</string>
+	<string name="eth_price">Ethereum Price</string>
+	<string name="xrp_price">Ripple Price</string>
+	<string name="update_prices">Update Prices</string>
+	<string name="ltc_price">Litecoin Price</string>
+	<string name="bch_price">Bitcoin Cash Price</string>
+	<string name="loading">Loading…</string>
+</resources>
