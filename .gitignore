@@ -1,6 +1,8 @@
 *.iml
 /app/app.iml
 /local.properties
+.idea
+app/release
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
@@ -9,3 +11,4 @@
 /captures
 .externalNativeBuild
 ./app/release
+.gradle
