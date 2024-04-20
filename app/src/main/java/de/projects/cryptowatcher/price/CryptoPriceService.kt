@@ -4,17 +4,16 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
-import de.projects.cryptowatcher.currencies.FiatCurrencies.USD
 import de.projects.cryptowatcher.intents.CryptoIntents
 import okhttp3.Request
 
 class CryptoPriceService : Service() {
 	override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-		CryptoHandlerThread("https://production.api.coindesk.com/v1/currency/$BTC/ticker", BTC, USD, this).start()
-		CryptoHandlerThread("https://production.api.coindesk.com/v1/currency/$ETH/ticker", ETH, USD, this).start()
-		CryptoHandlerThread("https://production.api.coindesk.com/v1/currency/$XRP/ticker", XRP, USD, this).start()
-		CryptoHandlerThread("https://production.api.coindesk.com/v1/currency/$LTC/ticker", LTC, USD, this).start()
-		CryptoHandlerThread("https://production.api.coindesk.com/v1/currency/$BCH/ticker", BCH, USD, this).start()
+		CryptoHandlerThread("https://production.api.coindesk.com/v2/tb/price/ticker?assets=$BTC", BTC, this).start()
+		CryptoHandlerThread("https://production.api.coindesk.com/v2/tb/price/ticker?assets=$ETH", ETH, this).start()
+		CryptoHandlerThread("https://production.api.coindesk.com/v2/tb/price/ticker?assets=$XRP", XRP, this).start()
+		CryptoHandlerThread("https://production.api.coindesk.com/v2/tb/price/ticker?assets=$LTC", LTC, this).start()
+		CryptoHandlerThread("https://production.api.coindesk.com/v2/tb/price/ticker?assets=$BCH", BCH, this).start()
 
 		return START_NOT_STICKY
 	}

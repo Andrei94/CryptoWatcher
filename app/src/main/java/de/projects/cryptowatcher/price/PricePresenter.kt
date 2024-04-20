@@ -6,7 +6,7 @@ class PricePresenter(private val price: TextView, private val percent: TextView)
 	fun setCryptoDataWithColor(cryptoData: CryptoData) {
 		cryptoData.cryptoValue?.let {
 			if(cryptoData.cryptoValue.toDouble() <= 1)
-				price.text = "%.4f".format(cryptoData.cryptoValue.toFloat())
+				price.text = "%.4f".format(cryptoData.cryptoValue.toDouble())
 			else
 				price.text = "%.2f".format(cryptoData.cryptoValue.toFloat())
 		}

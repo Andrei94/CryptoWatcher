@@ -6,6 +6,8 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.View
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import de.projects.cryptowatcher.R
 import de.projects.cryptowatcher.R.string.loading
 import de.projects.cryptowatcher.currencies.CryptoCurrencies.*
@@ -17,6 +19,8 @@ class MainActivity : Activity(), ViewUpdater {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+		MobileAds.initialize(this, "ca-app-pub-2557366403157516~6699126486")
+		adView.loadAd(AdRequest.Builder().build())
 		setCoindeskReference()
 		setLoadingText()
 	}
